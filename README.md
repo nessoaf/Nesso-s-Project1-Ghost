@@ -25,5 +25,5 @@ It’s your job to evacuate from this maze while keeping your head. while the en
 
 
 ##wireframe/stagingidea
-(/wireframe/mazes.png)
-(/wireframe/basics)
+![](/wireframe/mazes.png)
+![](/wireframe/basics)

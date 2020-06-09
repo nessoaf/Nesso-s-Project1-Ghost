@@ -1,3 +1,54 @@
-body {
-    background: blue;
+*{
+    border: 1px solid chartreuse;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.container {
+    border:5px solid indigo;
+    max-width: 75em;
+    display: grid;
+    padding: 1em;
+    grid-template-rows: .5,.5;
+    grid-template-columns: .25,.5,.25;
+    grid-template-areas: "top-left top-right"
+    "game game"
+    "btm-left btm-right";
+}
+.topleft .topright .bottomleft .bottomright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+canvas {
+    justify-self: center;    
+    grid-area: game;
+    width: 100%;
+    height: 100;
+}
+.topleft {
+    grid-area: top-left;
+    background: black;
+}
+.topright {
+    grid-area: top-right;
+    background: black;
+}
+.bottomleft {
+    grid-area: btm-left;
+    background: black;
+}
+.bottomright {
+    grid-area: btm-right;
+    background: black;
 }
