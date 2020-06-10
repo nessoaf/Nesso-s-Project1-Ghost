@@ -6,7 +6,7 @@ It’s your job to evacuate from this maze while keeping your head. while the en
 
 
 ##Mvp:
-*Basic randomly generated maze. 
+*Basic randomly generated maze. scrapped for a built maze(easier for later function)
 *Player that has to navigate the maze-
 *Npcs that travel around the map/maybe try to follow the player?
 *Multi level/area design
@@ -17,6 +17,7 @@ It’s your job to evacuate from this maze while keeping your head. while the en
 *Restart scenario/or more of a reset
 
 ##Stretch:
+*combat/hit/dmg
 *Have mazes that are more open/less one way out only
 *Add character/npc art
 *Add traps/pitfalls/someway to change the map
