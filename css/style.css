@@ -1,5 +1,9 @@
-table {
-    color: black;
-    
+body{
+    padding: 20px;
+    margin: 0;
 
+}
+canvas{
+    vertical-align: top;
+    background-color: chartreuse;
 }
