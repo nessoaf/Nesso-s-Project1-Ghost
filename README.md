@@ -6,15 +6,15 @@ It’s your job to evacuate from this maze while keeping your head. while the en
 
 
 ## Mvp:
-* Npcs that travel around the map
-* Block formats
+* Npcs that travel around the map - completed
+* Block formats - completed
 * Character functionality – movement - compeletd
 * Collisions with walls - completed
 * Endgame scenario
     * Game Ends with a death (character runs into enemie obj)
         * Restart scenario/or more of a reset ( once game ends - doesnt require outside game refresh)
             * restarts the game from scratch(possible page reload)
-* combat/hit
+* combat/hit - completed
 
 ## Stretch:
 * Have mazes that are more open/less one way out only

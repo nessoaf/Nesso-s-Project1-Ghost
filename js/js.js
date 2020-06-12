@@ -1,7 +1,7 @@
 // itteration 3!
 
 var canvas = document.querySelector('canvas'); // canvas var is 'looking' for canvas in html
-canvas.width = 1250;
+canvas.width = 750;
 canvas.height = 750;
 var c =canvas.getContext("2d")
 var player
@@ -10,22 +10,27 @@ var gameEnd = false; // boolean
 
 
 
-function game (){
-  if (!gameEnd){
-    Player();
-    Enemies();
-    movementHandler();
+function gameEnding (){
+  if (gameEnd){
+    c.clearRect(0,0,canvas.width,canvas.height);
   }
-  //should notification of end
-  //give win or lose
-  //reset all player position and clear board
-  //button to reset game or restart game()
+  // should notification of end
+  // give win or lose
+  // reset all player position and clear board
+  // button to reset game or restart game()
 }
 
 
 function start(){
+  if (!gameEnd){
+    Player();
+    Enemies();
+    movementHandler();
+    
+  }
 
 }
+
 
 function Player(x, y, color, height, width) {
     this.x = x
@@ -86,6 +91,8 @@ function Enemies(x,y,vx,vy,radius) { //this is an object ( everything from this 
         c.arc(this.x,this.y,this.radius,0,Math.PI *2,false);
         c.strokeStyle = "blue";
         c.stroke()
+        c.fillStyle = "red"
+        c.fill()
     }
     
     this.movement = function(){
@@ -101,18 +108,19 @@ if (player.x < this.x + this.radius
     && player.y + player.height > this.y) {
       player.alive  = false 
         gameEnd = true;
-        console.log(endGame)
       
-        // add clearing and resetting info cann an (endgame())  
-    console.log('playerded')
+        // add clearing and resetting info cann an (gameEnd())  
+        if (gameEnd) {
+          gameEnding();
 
+        }
     }
 
 this.x += this.vx
 this.y += this.vy
 
 
-this.draw()
+this.draw() //this draws the Enemies
 }
 
 }
@@ -134,16 +142,19 @@ for (var i=0;i<100;i++) {
 
 
 function animate() {
+  if (!gameEnd) {
     requestAnimationFrame(animate);
-    c.clearRect(0,0,canvas.width,canvas.height);//this clears the entire page during each animation (below this code)
+    // c.clearRect(0,0,canvas.width,canvas.height);//this clears the entire page during each animation (below this code)
     for (let i = 0; i < enemiesGroup.length; i++) {
-        enemiesGroup[i].movement();   
-    }
+      enemiesGroup[i].movement();   
+  }
+  }
+    
+    
     if(player.alive){
     player.render()
-    }
-    if(enemies.alive){
-      enemies.render()
+    gameEnd=false;
+    
     }
     // enemies.draw()
     // enemies.movement()
@@ -161,7 +172,7 @@ function animate() {
     //     x += vx
     //     y += vy
 }
-animate()
+animate();
 
 
 
@@ -194,4 +205,4 @@ animate()
 //     c.arc(x,y,20,0,Math.PI *2,false);
 //     c.strokeStyle = "tan";
 //     c.stroke()
-// }
+// }animate();
