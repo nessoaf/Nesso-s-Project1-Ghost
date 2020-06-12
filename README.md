@@ -11,9 +11,7 @@ It’s your job to evacuate from this maze while keeping your head. while the en
 * Character functionality – movement - compeletd
 * Collisions with walls - completed
 * Endgame scenario
-    * Game Ends with a death (character runs into enemie obj)
-        * Restart scenario/or more of a reset ( once game ends - doesnt require outside game refresh)
-            * restarts the game from scratch(possible page reload)
+    * Game Ends with a death (character runs into enemie obj) complete     
 * combat/hit - completed
 
 ## Stretch:
@@ -24,6 +22,8 @@ It’s your job to evacuate from this maze while keeping your head. while the en
 * Possible win state – after boss room 1 or 5
 * add damage
 * npcsmaybe try to follow the player?
+* Restart scenario/or more of a reset ( once game ends - doesnt require outside game refresh)
+    * restarts the game from scratch(possible page reload)
 
 ## wireframe/stagingidea
 ![](/wireframe/mazes.png)
