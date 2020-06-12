@@ -5,23 +5,26 @@ It’s your job to evacuate from this maze while keeping your head. while the en
 “Once you’ve gotten your bearing beware of traps?” maybe idk probably later in the process.
 
 
-##Mvp:
-*Npcs that travel around the map/maybe try to follow the player?
-*Block formats
-*Character functionality – movement - compeletd
-*Collisions with walls - completed
-*Endgame scenario
-*Restart scenario/or more of a reset
-*combat/hit/dmg
+## Mvp:
+* Npcs that travel around the map
+* Block formats
+* Character functionality – movement - compeletd
+* Collisions with walls - completed
+* Endgame scenario
+    * Game Ends with a death (character runs into enemie obj)
+        * Restart scenario/or more of a reset ( once game ends - doesnt require outside game refresh)
+            * restarts the game from scratch(possible page reload)
+* combat/hit
 
-##Stretch:
-*Have mazes that are more open/less one way out only
-*Add character/npc art
-*Add traps/pitfalls/someway to change the map
-*Maybe make a boss room that has collisions that effect the boss – like raid mechanics
-*Possible win state – after boss room 1 or 5
+## Stretch:
+* Have mazes that are more open/less one way out only
+* Add character/npc art
+* Add traps/pitfalls/someway to change the map
+* Maybe make a boss room that has collisions that effect the boss – like raid mechanics
+* Possible win state – after boss room 1 or 5
+* add damage
+* npcsmaybe try to follow the player?
 
-
-##wireframe/stagingidea
+## wireframe/stagingidea
 ![](/wireframe/mazes.png)
 ![](/wireframe/basics)

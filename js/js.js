@@ -5,6 +5,27 @@ canvas.width = 1250;
 canvas.height = 750;
 var c =canvas.getContext("2d")
 var player
+var gameEnd = false; // boolean
+
+
+
+
+function game (){
+  if (!gameEnd){
+    Player();
+    Enemies();
+    movementHandler();
+  }
+  //should notification of end
+  //give win or lose
+  //reset all player position and clear board
+  //button to reset game or restart game()
+}
+
+
+function start(){
+
+}
 
 function Player(x, y, color, height, width) {
     this.x = x
@@ -18,7 +39,7 @@ function Player(x, y, color, height, width) {
       c.fillRect(this.x, this.y, this.height, this.width)
     }
   }
-  player = new Player(10,10,'green',16,16)
+  player = new Player(10,10,'green',16,16) // confused as to why this has to be out of the function under this - like for canvas crawler but hey it works
   document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', movementHandler)
       
@@ -58,6 +79,7 @@ function Enemies(x,y,vx,vy,radius) { //this is an object ( everything from this 
     this.vx =vx
     this.vy = vy
     this.radius=radius
+    this.alive = true
     
     this.draw = function(){
         c.beginPath();
@@ -77,10 +99,11 @@ if (player.x < this.x + this.radius
     && player.x + player.width > this.x
     && player.y < this.y + this.radius
     && player.y + player.height > this.y) {
-      player.alive  = false
-      reload() 
-      alert
-        
+      player.alive  = false 
+        gameEnd = true;
+        console.log(endGame)
+      
+        // add clearing and resetting info cann an (endgame())  
     console.log('playerded')
 
     }
@@ -118,6 +141,9 @@ function animate() {
     }
     if(player.alive){
     player.render()
+    }
+    if(enemies.alive){
+      enemies.render()
     }
     // enemies.draw()
     // enemies.movement()
