@@ -43,7 +43,8 @@ function start() {
   console.log('restarting')
   // reset enemies \ creating the enemies 
   for (var i = 0; i < enemiesGroup.length; i++) {
-  enemiesGroup[i].alive = false
+  c.clearRect(enemiesGroup[i].x, enemiesGroup[i].y, enemiesGroup[i].width, enemiesGroup[i].height)
+  
   }
   // spawnEnemies();
   enemiesGroup = [];
