@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-    <div>
-        <canvas id="game" class="game"></canvas>
+    <h1>How Long Can you Survive</h1>
+    <h2>"w, s, a, d" are you friends! Or are they?</h2>
+    <h2>How long can you survive?</h2>
+    <div id="btn" class="btn">
+        <button id="button" onclick="pageRefresh()">Start!</button>
+        <form hidden action="">
+            <button id="reset">Lost?</button>
+        </form>
     </div>
-        <script src="js/js.js"></script>
+
+    <div class="container" id="container">
+        <div class="test1" id="test1"></div>
+        <div class="gamediv" id="gamediv">
+            <canvas id="canvas" class="canvas"></canvas>
+        </div>
+        <div class="test2" id="test2"></div>
+        <div></div>
+    </div>
+    <script src="js/js.js"></script>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- how to delete enemies
+add when games end creat button that refreshes the page -->

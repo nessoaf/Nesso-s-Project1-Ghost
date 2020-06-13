@@ -1,11 +1,46 @@
 * {
-    margin: 0;
+    margin: 0 auto;
+}
+h1, h2, div {
+    text-align: center;
+    font-family: 'MuseoModerno', cursive;
 }
 body {
+    background-image: url("video-game-2154473_1280.png");
+    width: fit-content;
 }
-div {
-    text-align: center;   
+
+body:hover {
+    background-color: blue;
+    animation-name: test1;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
+button {
+    text-align: center;
+}
+
+.gamediv {
+    text-align: center;
+}
+
+
+
+
+
+
+  
+  
+  @keyframes test1 {
+    0% {background-color: white;}
+    25% {background-color: yellow;}
+    50% {background-color: blue;}
+    75% {background-color: yellow;}
+    100% {background-color: white;}
+  }
+ 
+
 canvas {
     border: 15px solid goldenrod;
+    background: white;
 }

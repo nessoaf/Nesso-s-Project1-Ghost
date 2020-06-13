@@ -1,162 +1,87 @@
-var e1 = 150
-var e2 = 100
-var vx = .9
-var vy = .9
-radius = 30
+// initialize all game or global variables
+// enemies empty array
+// canvas and all related vars (width, height, etc.)
+// gameEnd boolean set to false
+// global player var
+// declare a player object
+// declare a enemy object
+// function decleration that spawns the global player using the player object as a template
+// function decleration that spawns the enemies using the enemy object
+// declare movement handler function for playerMovement
+// declare a startGame() function
+//// spawn our player using the global player function
+//// spawn our enemies using the spawn enemies function
+//// declare event listener that attaches a keydown event to document
+////// on keydown runs movementHandler
+//// while (!endGame) {
+////    run enemies movement
+//// if gameEnd === true
+////    c.clear()
+////    display game over message
 
-function enemies1() {
-    requestAnimationFrame(enemies1);
+// target html button 
+// add event listener to button onClick()
+//// on event run startGame()
 
-    c.clearRect(0,0,canvas.width,canvas.height)
+function movementHandler() {
 
-    c.beginPath()
-    c.arc(e1,100,radius,0, Math.PI*2, false)
-    c.strokeStyle = "blue"
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e1 + radius > canvas.width || e1-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vx=-vx
+    requestAnimationFrame(movementHandler);
+    // w=> y-=1; a => x-=1; s=> y+=1; d => x+=1
+    // w = 87, a=65, s=83, d=68
+    if (keys[87]) {
+        if (velY > -speed) {
+            velY--;
+        }
+    }
+
+    if (keys[83]) {
+        if (velY < speed) {
+            velY++;
+        }
+    }
+    if (keys[68]) {
+        if (velX < speed) {
+            velX++;
+        }
+    }
+    if (keys[65]) {
+        if (velX > -speed) {
+            velX--;
+        }
+    }
+
+    velY *= friction;
+    y += velY;
+    velX *= friction;
+    x += velX;
+
+    if (x >= 295) {
+        x = 295;
+    } else if (x <= 5) {
+        x = 5;
+    }
+
+    if (y > 295) {
+        y = 295;
+    } else if (y <= 5) {
+        y = 5;
+    }
+    c.clearRect(0, 0, 300, 300);
+    c.beginPath();
 }
-e1+=vx
-}
-enemies1()
 
+var x = 150,
+    y = 150,
+    velY = 0,
+    velX = 0,
+    speed = 2,
+    friction = 0.98,
+    keys = [];
 
-function enemies2() {
-    requestAnimationFrame(enemies2);
-    
-
-    c.beginPath()
-    c.arc(300,e2,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e2 + radius > canvas.height || e2-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vy = -vy
-}
-e2 += vy
-}
-enemies2()
-
-
-function enemies3() {
-    requestAnimationFrame(enemies3);
-
-    c.beginPath()
-    c.arc(450,e2,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e2 + radius > canvas.height || e2-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vy = -vy
-}
-e2 += vy
-}
-
-enemies3()
-
-
-function enemies4() {
-    requestAnimationFrame(enemies4);
-
-    c.beginPath()
-    c.arc(600,e2,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e2 + radius > canvas.height || e2-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vy = -vy
-}
-e2 += vy
-}
-enemies4()
-
-function enemies5() {
-    requestAnimationFrame(enemies5);
-
-    c.beginPath()
-    c.arc(750,e2,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e2 + radius > canvas.height || e2-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vy = -vy
-}
-e2 += vy
-}
-enemies5()
-
-function enemies6() {
-    requestAnimationFrame(enemies6);
-
-    c.beginPath()
-    c.arc(900,e2,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e2 + radius > canvas.height || e2-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vy = -vy
-}
-e2 += vy
-}
-enemies6()
-
-function enemies7() {
-    requestAnimationFrame(enemies7);
-
-    c.beginPath()
-    c.arc(e1,250,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e1 + radius > canvas.width || e1-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vx=-vx
-}
-e1+=vx
-}
-enemies7()
-function enemies8() {
-    requestAnimationFrame(enemies8);
-
-    c.beginPath()
-    c.arc(e1,400,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e1 + radius > canvas.width || e1-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vx=-vx
-}
-e1+=vx
-}
-enemies8()
-
-function enemies9() {
-    requestAnimationFrame(enemies9);
-
-    c.beginPath()
-    c.arc(e1,550,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e1 + radius > canvas.width || e1-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vx=-vx
-}
-e1+=vx
-}
-enemies9()
-
-function enemies10() {
-    requestAnimationFrame(enemies10);
-
-    c.beginPath()
-    c.arc(e1,700,radius,0, Math.PI*2, false)
-    c.stroke()
-    c.fillStyle = "blue"
-    c.fill()
-    if (e1 + radius > canvas.width || e1-radius < 0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-    vx= -vx
-}
-e1 += vx
-}
-enemies10()
+//Event listener 
+document.addEventListener("keydown", function (e) {
+    keys[e.keyCode] = true;
+});
+document.addEventListener("keyup", function (e) {
+    keys[e.keyCode] = false;
+});
