@@ -85,3 +85,37 @@ document.addEventListener("keydown", function (e) {
 document.addEventListener("keyup", function (e) {
     keys[e.keyCode] = false;
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// enemies.draw()
+// enemies.movement()
+// c.beginPath();
+// c.arc(x,y,radius,Math.PI*2,false);
+// c.strokeStyle = '#39ff14';
+// c.stroke() ;//.stroke() has to have th () because its a function
+// if (x +radius>canvas.width || x-radius<0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
+//     vx=-vx
+// }
+// if (y +radius>canvas.height || y-radius<0 ) { //if var y is GREATER than canvas height then invert velocity "||"and if is LESS than 0 begin increasing 
+//     vy=-vy
+// }
+
+//     x += vx
+//     y += vy

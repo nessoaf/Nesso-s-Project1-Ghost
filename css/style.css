@@ -6,8 +6,8 @@ h1, h2, div,p {
     font-family: 'MuseoModerno', cursive;
 }
 body {
-    background-image: url("video-game-2154473_1280.png");
-    width: fit-content;
+    background-image: url("pacmangame.jpg");
+    background-color: white;
 }
 
 body:hover {
@@ -27,7 +27,7 @@ body:hover {
 @keyframes test1 {
     0% {background-color: white;}
     25% {background-color: yellow;}
-    50% {background-color: blue;}
+    50% {background-color: red;}
     75% {background-color: yellow;}
     100% {background-color: white;}
 }

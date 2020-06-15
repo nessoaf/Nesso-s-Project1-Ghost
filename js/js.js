@@ -67,8 +67,8 @@ function Player(x, y, color, height, width) {
   // this.ym = 50
   this.velY = 0
   this.velX = 0
-  this.speed = 3
-  this.friction = 0.98
+  this.speed = 1.5
+  this.friction = .9
 
   //update();
 
@@ -213,36 +213,3 @@ document.getElementById('button').addEventListener('click', function () {
   spawnEnemies();
   animate();
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// enemies.draw()
-// enemies.movement()
-// c.beginPath();
-// c.arc(x,y,radius,Math.PI*2,false);
-// c.strokeStyle = '#39ff14';
-// c.stroke() ;//.stroke() has to have th () because its a function
-// if (x +radius>canvas.width || x-radius<0 ) { //if var x is GREATER than canvas width then invert velocity "||"and if is LESS than 0 begin increasing - god this is cool
-//     vx=-vx
-// }
-// if (y +radius>canvas.height || y-radius<0 ) { //if var y is GREATER than canvas height then invert velocity "||"and if is LESS than 0 begin increasing 
-//     vy=-vy
-// }
-
-//     x += vx
-//     y += vy
