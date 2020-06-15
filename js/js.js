@@ -7,7 +7,7 @@ var canvas = document.querySelector('canvas'); // canvas var is 'looking' for ca
 var c = canvas.getContext("2d")
 
 //set canvas size
-canvas.width = 750;
+canvas.width = 1300;
 canvas.height = 700;
 
 //boolean for gameEnd
@@ -15,7 +15,6 @@ var gameEnd = false; // boolean
 
 //global player var
 var player;
-
 var frameid;
 
 //empty enemies array
@@ -33,7 +32,6 @@ document.body.addEventListener("keyup", function (e) {
   keys[e.keyCode] = false;
 });
 
-
 //Enemy spawn amount/size/movement variables
 function spawnEnemies() {
   for (var i = 0; i < 50; i++) {
@@ -50,9 +48,6 @@ function spawnEnemies() {
 //player variable to obj
 player = new Player(10, 10, '#00e600', 16, 16)
 
-// function spawnHero() {
-//   player = new Player(10, 10, '#00e600', 16, 16)
-// }
 
 //Player Object
 function Player(x, y, color, height, width) {

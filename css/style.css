@@ -1,20 +1,22 @@
 * {
     margin: 0 auto;
 }
-h1, h2, div,p {
+h1, h2,h3, div,p {
     text-align: center;
     font-family: 'MuseoModerno', cursive;
 }
 body {
-    background-image: url("pacmangame.jpg");
-    background-color: white;
-}
-
-body:hover {
+    background-image: url("controller.png");
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
     background-color: blue;
     animation-name: test1;
     animation-duration: 10s;
     animation-iteration-count: infinite;
+}
+
+h1:hover, h2:hover, h3:hover {
+    
 }
 .btn {
     justify-content: center;
@@ -33,6 +35,7 @@ body:hover {
 }
 
 canvas {
-    border: 15px solid goldenrod;
-    background: white;
+    border: 15px groove black;
+    background:rgba(255, 255, 255, .5);
+};
 }
