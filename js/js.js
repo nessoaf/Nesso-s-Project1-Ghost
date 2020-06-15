@@ -27,7 +27,6 @@ var keys = [];
 //Event listener 
 // document.addEventListener('keydown', movementHandler)
 document.body.addEventListener("keydown", function (e) {
-  console.log('hihi')
   keys[e.keyCode] = true;
 });
 document.body.addEventListener("keyup", function (e) {
@@ -37,7 +36,7 @@ document.body.addEventListener("keyup", function (e) {
 
 //Enemy spawn amount/size/movement variables
 function spawnEnemies() {
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 50; i++) {
     var radius = 20;
     var x = Math.random() * (canvas.width - radius * 2) + radius; // these cannot be swapped for obvious reasons but remember
     var y = Math.random() * (canvas.height - radius * 2) + radius;
@@ -63,58 +62,58 @@ function Player(x, y, color, height, width) {
   this.height = height
   this.width = width
   this.alive = true
-  
+
   // this.xm = 50
   // this.ym = 50
   this.velY = 0
   this.velX = 0
-  this.speed = 2
+  this.speed = 3
   this.friction = 0.98
 
   //update();
 
-  this.update = function() {
-   // requestAnimationFrame(update);
-    
+  this.update = function () {
+    // requestAnimationFrame(update);
+
     if (keys[87]) {
-        if (this.velY > -this.speed) {
-            this.velY--;
-        }
+      if (this.velY > -this.speed) {
+        this.velY--;
+      }
     }
-    
+
     if (keys[83]) {
-        if (this.velY < this.speed) {
-            this.velY++;
-        }
+      if (this.velY < this.speed) {
+        this.velY++;
+      }
     }
     if (keys[68]) {
-        if (this.velX < this.speed) {
-            this.velX++;
-        }
+      if (this.velX < this.speed) {
+        this.velX++;
+      }
     }
     if (keys[65]) {
-        if (this.velX > -this.speed) {
-            this.velX--;
-        }
+      if (this.velX > -this.speed) {
+        this.velX--;
+      }
     }
-  
+
     this.velY *= this.friction;
     this.y += this.velY;
     this.velX *= this.friction;
     this.x += this.velX;
-  
+
     if (this.x >= canvas.width) {
-        this.x = canvas.width;
+      this.x = canvas.width;
     } else if (this.x <= 5) {
-        this.x = 5;
+      this.x = 5;
     }
-  
+
     if (this.y > canvas.height) {
-        this.y = canvas.height;
+      this.y = canvas.height;
     } else if (this.y <= 5) {
-        this.y = 5;
+      this.y = 5;
     }
-  
+
     // ctx.clearRect(0, 0, 300, 300);
     // ctx.beginPath();
     // ctx.arc(x, y, 5, 0, Math.PI * 2);
@@ -122,10 +121,11 @@ function Player(x, y, color, height, width) {
   }
   this.render = function () {
     this.update()
-    console.log(this.x,this.y)
-    c.fillStyle = this.color
-    c.fillRect(this.x, this.y, this.height, this.width)
+    c.drawImage(document.getElementById('ghost'), this.x, this.y)
+    // c.fillStyle = this.color
+    // c.fillRect(this.x, this.y, this.height, this.width)
   }
+
 }
 
 
@@ -140,7 +140,7 @@ function Enemy(x, y, vx, vy, radius) { //this is an object ( everything from thi
 
   this.draw = function () {
     c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    c.drawImage(document.getElementById('pacman'), this.x, this.y);
     c.strokeStyle = "#00e600";
     c.stroke()
     c.fillStyle = "#e600e6"
@@ -174,30 +174,13 @@ function Enemy(x, y, vx, vy, radius) { //this is an object ( everything from thi
 
   }
 }
-// var x = 50,
-//     y = 50,
-//     velY = 0,
-//     velX = 0,
-//     this.speed = 2,
-//     friction = 0.98
-
-
-
 
 function start() {
   // reset enemies \ creating the enemies 
-  for (var i = 0; i < enemiesGroup.length; i++) {
-    // c.clearRect(enemiesGroup[i].x, enemiesGroup[i].y, enemiesGroup[i].width, enemiesGroup[i].height)
-
-  }
-  // spawnEnemies();
-  // enemiesGroup = [];
-  //created a hero for the game
-  spawnHero();
-  // animate();
+  for (var i = 0; i < enemiesGroup.length; i++)
+    spawnHero();
 
 }
-
 
 function gameEnding() {
   cancelAnimationFrame(frameid);
@@ -206,36 +189,6 @@ function gameEnding() {
   }, 10)// after gameEnding is called we stop generating ani frames and then clearrect with 10mil timeout
 
 }
-
-
-
-
-//Basic movement
-// var x = Math.random() * canvas.width; // these cannot be swapped for obvious reasons but remember
-// var y = Math.random() * canvas.height;
-// var vx = 2;//velocity x
-// var vy = 1//naming the velocity will adjust the speed at which the animated circles move
-// var radius = 20
-
-// function movementHandler(e) {
-//   // w=> y-=1; a => x-=1; s=> y+=1; d => x+=1
-//   // w = 87, a=65, s=83, d=68
-//   switch (e.keyCode) {
-//     case (87):
-//       player.y -= 10
-//       break
-//     case (65):
-//       player.x -= 10
-//       break
-//     case (83):
-//       player.y += 10
-//       break
-//     case (68):
-//       player.x += 10
-//       break
-//   }
-// }
-
 
 function animate() { //An async function is a function declared with the async keyword. Async functions are instances of the AsyncFunction constructor, and the await keyword is permitted within them.
   if (!player.alive) {
@@ -250,13 +203,11 @@ function animate() { //An async function is a function declared with the async k
     }
   }
 
-
   if (player.alive) {
     player.render();
 
   }
 }
-
 
 document.getElementById('button').addEventListener('click', function () {
   spawnEnemies();
