@@ -27,6 +27,7 @@ var keys = [];
 //Event listener 
 // document.addEventListener('keydown', movementHandler)
 document.body.addEventListener("keydown", function (e) {
+  console.log('hihi')
   keys[e.keyCode] = true;
 });
 document.body.addEventListener("keyup", function (e) {
@@ -63,16 +64,65 @@ function Player(x, y, color, height, width) {
   this.width = width
   this.alive = true
   
-  this.xm = 50
-  this.ym = 50
+  // this.xm = 50
+  // this.ym = 50
   this.velY = 0
   this.velX = 0
   this.speed = 2
   this.friction = 0.98
 
-  update();
+  //update();
 
+  this.update = function() {
+   // requestAnimationFrame(update);
+    
+    if (keys[87]) {
+        if (this.velY > -this.speed) {
+            this.velY--;
+        }
+    }
+    
+    if (keys[83]) {
+        if (this.velY < this.speed) {
+            this.velY++;
+        }
+    }
+    if (keys[68]) {
+        if (this.velX < this.speed) {
+            this.velX++;
+        }
+    }
+    if (keys[65]) {
+        if (this.velX > -this.speed) {
+            this.velX--;
+        }
+    }
+  
+    this.velY *= this.friction;
+    this.y += this.velY;
+    this.velX *= this.friction;
+    this.x += this.velX;
+  
+    if (this.x >= canvas.width) {
+        this.x = canvas.width;
+    } else if (this.x <= 5) {
+        this.x = 5;
+    }
+  
+    if (this.y > canvas.height) {
+        this.y = canvas.height;
+    } else if (this.y <= 5) {
+        this.y = 5;
+    }
+  
+    // ctx.clearRect(0, 0, 300, 300);
+    // ctx.beginPath();
+    // ctx.arc(x, y, 5, 0, Math.PI * 2);
+    // ctx.fill();
+  }
   this.render = function () {
+    this.update()
+    console.log(this.x,this.y)
     c.fillStyle = this.color
     c.fillRect(this.x, this.y, this.height, this.width)
   }
@@ -124,60 +174,14 @@ function Enemy(x, y, vx, vy, radius) { //this is an object ( everything from thi
 
   }
 }
-var x = 50,
-    y = 50,
-    velY = 0,
-    velX = 0,
-    speed = 2,
-    friction = 0.98
+// var x = 50,
+//     y = 50,
+//     velY = 0,
+//     velX = 0,
+//     this.speed = 2,
+//     friction = 0.98
 
-function update() {
-  requestAnimationFrame(update);
-  
-  if (keys[87]) {
-      if (velY > -speed) {
-          velY--;
-      }
-  }
-  
-  if (keys[83]) {
-      if (velY < speed) {
-          velY++;
-      }
-  }
-  if (keys[68]) {
-      if (velX < speed) {
-          velX++;
-      }
-  }
-  if (keys[65]) {
-      if (velX > -speed) {
-          velX--;
-      }
-  }
 
-  velY *= friction;
-  y += velY;
-  velX *= friction;
-  x += velX;
-
-  if (x >= 295) {
-      x = 295;
-  } else if (x <= 5) {
-      x = 5;
-  }
-
-  if (y > 295) {
-      y = 295;
-  } else if (y <= 5) {
-      y = 5;
-  }
-
-  // ctx.clearRect(0, 0, 300, 300);
-  // ctx.beginPath();
-  // ctx.arc(x, y, 5, 0, Math.PI * 2);
-  // ctx.fill();
-}
 
 
 function start() {
