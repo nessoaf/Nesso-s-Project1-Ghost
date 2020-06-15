@@ -21,8 +21,18 @@ var frameid;
 //empty enemies array
 var enemiesGroup = []; // after the game end all eneies are 'killed' we are remaking themall from scratch with a restart fucntion
 
+//key array var
+var keys = [];
+
 //Event listener 
-document.addEventListener('keydown', movementHandler)
+// document.addEventListener('keydown', movementHandler)
+document.body.addEventListener("keydown", function (e) {
+  keys[e.keyCode] = true;
+});
+document.body.addEventListener("keyup", function (e) {
+  keys[e.keyCode] = false;
+});
+
 
 //Enemy spawn amount/size/movement variables
 function spawnEnemies() {
@@ -40,9 +50,9 @@ function spawnEnemies() {
 //player variable to obj
 player = new Player(10, 10, '#00e600', 16, 16)
 
-function spawnHero() {
-  player = new Player(10, 10, '#00e600', 16, 16)
-}
+// function spawnHero() {
+//   player = new Player(10, 10, '#00e600', 16, 16)
+// }
 
 //Player Object
 function Player(x, y, color, height, width) {
@@ -52,6 +62,16 @@ function Player(x, y, color, height, width) {
   this.height = height
   this.width = width
   this.alive = true
+  
+  this.xm = 50
+  this.ym = 50
+  this.velY = 0
+  this.velX = 0
+  this.speed = 2
+  this.friction = 0.98
+
+  update();
+
   this.render = function () {
     c.fillStyle = this.color
     c.fillRect(this.x, this.y, this.height, this.width)
@@ -104,6 +124,61 @@ function Enemy(x, y, vx, vy, radius) { //this is an object ( everything from thi
 
   }
 }
+var x = 50,
+    y = 50,
+    velY = 0,
+    velX = 0,
+    speed = 2,
+    friction = 0.98
+
+function update() {
+  requestAnimationFrame(update);
+  
+  if (keys[87]) {
+      if (velY > -speed) {
+          velY--;
+      }
+  }
+  
+  if (keys[83]) {
+      if (velY < speed) {
+          velY++;
+      }
+  }
+  if (keys[68]) {
+      if (velX < speed) {
+          velX++;
+      }
+  }
+  if (keys[65]) {
+      if (velX > -speed) {
+          velX--;
+      }
+  }
+
+  velY *= friction;
+  y += velY;
+  velX *= friction;
+  x += velX;
+
+  if (x >= 295) {
+      x = 295;
+  } else if (x <= 5) {
+      x = 5;
+  }
+
+  if (y > 295) {
+      y = 295;
+  } else if (y <= 5) {
+      y = 5;
+  }
+
+  // ctx.clearRect(0, 0, 300, 300);
+  // ctx.beginPath();
+  // ctx.arc(x, y, 5, 0, Math.PI * 2);
+  // ctx.fill();
+}
+
 
 function start() {
   // reset enemies \ creating the enemies 
@@ -124,14 +199,8 @@ function gameEnding() {
   cancelAnimationFrame(frameid);
   setTimeout(function () {
     c.clearRect(0, 0, canvas.width, canvas.height)
-  }, 10)
-  //c.clearRect(0,0,canvas.width, canvas.height); // this is a built in func in js for cinvas
+  }, 10)// after gameEnding is called we stop generating ani frames and then clearrect with 10mil timeout
 
-
-  // should notification of end
-  // give win or lose
-  // reset all player position and clear board
-  // button to reset game or restart game()
 }
 
 
@@ -144,24 +213,24 @@ function gameEnding() {
 // var vy = 1//naming the velocity will adjust the speed at which the animated circles move
 // var radius = 20
 
-function movementHandler(e) {
-  // w=> y-=1; a => x-=1; s=> y+=1; d => x+=1
-  // w = 87, a=65, s=83, d=68
-  switch (e.keyCode) {
-    case (87):
-      player.y -= 10
-      break
-    case (65):
-      player.x -= 10
-      break
-    case (83):
-      player.y += 10
-      break
-    case (68):
-      player.x += 10
-      break
-  }
-}
+// function movementHandler(e) {
+//   // w=> y-=1; a => x-=1; s=> y+=1; d => x+=1
+//   // w = 87, a=65, s=83, d=68
+//   switch (e.keyCode) {
+//     case (87):
+//       player.y -= 10
+//       break
+//     case (65):
+//       player.x -= 10
+//       break
+//     case (83):
+//       player.y += 10
+//       break
+//     case (68):
+//       player.x += 10
+//       break
+//   }
+// }
 
 
 function animate() { //An async function is a function declared with the async keyword. Async functions are instances of the AsyncFunction constructor, and the await keyword is permitted within them.
@@ -173,7 +242,7 @@ function animate() { //An async function is a function declared with the async k
     c.clearRect(0, 0, canvas.width, canvas.height);//this clears the entire page during each animation (below this code)
     for (let i = 0; i < enemiesGroup.length; i++) {
       enemiesGroup[i].movement();
-      
+
     }
   }
 
