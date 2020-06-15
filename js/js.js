@@ -26,7 +26,7 @@ document.addEventListener('keydown', movementHandler)
 
 //Enemy spawn amount/size/movement variables
 function spawnEnemies() {
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 20; i++) {
     var radius = 20;
     var x = Math.random() * (canvas.width - radius * 2) + radius; // these cannot be swapped for obvious reasons but remember
     var y = Math.random() * (canvas.height - radius * 2) + radius;
@@ -173,6 +173,7 @@ function animate() { //An async function is a function declared with the async k
     c.clearRect(0, 0, canvas.width, canvas.height);//this clears the entire page during each animation (below this code)
     for (let i = 0; i < enemiesGroup.length; i++) {
       enemiesGroup[i].movement();
+      
     }
   }
 
@@ -182,14 +183,6 @@ function animate() { //An async function is a function declared with the async k
 
   }
 }
-
-function pageRefresh() {
-  var change = document.getElementById('reset')
-  if (change.style.visibility === 'hidden') {
-    change.style.visibility = 'visible'
-  }
-}
-
 
 
 document.getElementById('button').addEventListener('click', function () {

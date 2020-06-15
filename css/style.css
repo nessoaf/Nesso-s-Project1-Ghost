@@ -16,8 +16,8 @@ body:hover {
     animation-duration: 10s;
     animation-iteration-count: infinite;
 }
-button {
-    text-align: center;
+.btn {
+    justify-content: center;
 }
 
 .gamediv {
