@@ -109,10 +109,6 @@ function Player(x, y, color, height, width) {
       this.y = 5;
     }
 
-    // ctx.clearRect(0, 0, 300, 300);
-    // ctx.beginPath();
-    // ctx.arc(x, y, 5, 0, Math.PI * 2);
-    // ctx.fill();
   }
   this.render = function () {
     this.update()
@@ -182,6 +178,10 @@ function gameEnding() {
   setTimeout(function () {
     c.clearRect(0, 0, canvas.width, canvas.height)
   }, 10)// after gameEnding is called we stop generating ani frames and then clearrect with 10mil timeout
+  document.getElementById('reset').hidden = false;
+  var element = document.getElementById('reset');
+  element.classList.add('shake-crazy')
+  
 
 }
 
